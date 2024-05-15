@@ -85,7 +85,7 @@ namespace SPORTREZHIM123
                 };
 
                 chart1.Series.Add(series1);
-               
+                chart1.Series.Add(series2);
 
                 chart1.Series["Длительность бега"].XValueType = ChartValueType.String;
                 chart1.Series["Скорость"].XValueType = ChartValueType.String;
