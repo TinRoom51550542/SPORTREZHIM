@@ -37,6 +37,17 @@ namespace SPORTREZHIM123
                 }
                 return dataArray;
             }
+        public double weekend(string[,] dataArray)
+        {
+            double sum = 0;
+            for (int i = 1; i < 32; i++)
+            {
+                if (dataArray[i, 1] == "Суббота" || dataArray[i, 1] == "Воскресенье") {
+                    sum += Convert.ToDouble(dataArray[i, 3]);
+            }
+            }
+            return sum;
+        }
 
         }
 
