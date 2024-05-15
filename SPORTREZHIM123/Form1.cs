@@ -57,6 +57,30 @@ namespace SPORTREZHIM123
 
         private void btnForecast_Click(object sender, EventArgs e)
         {
+            int n = 5;
+            int N = 10;
+            Manipulation k = new Manipulation();
+            string[,] dataArray = k.data();
+          
+            List<double> op = k.extrapolation(dataArray, n, N, 2);
+
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+
+            chart1.ChartAreas.Add(new ChartArea("Area1"));
+
+            Series series = new Series
+            {
+                Name = "Data",
+                ChartType = SeriesChartType.Line
+            };
+
+            for (int i = 0; i < op.Count; i++)
+            {
+                series.Points.AddXY(i + 1, op[i]); 
+            }
+
+            chart1.Series.Add(series);
 
         }
 
