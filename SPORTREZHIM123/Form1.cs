@@ -85,8 +85,10 @@ namespace SPORTREZHIM123
                 };
 
                 chart1.Series.Add(series1);
+                chart1.Series.Add(series2);
 
                 chart1.Series["Длительность бега"].XValueType = ChartValueType.String;
+                chart1.Series["Скорость"].XValueType = ChartValueType.String;
 
                 for (int row = 2; row <= worksheet.Dimension.Rows; row++)
                 {
@@ -95,6 +97,7 @@ namespace SPORTREZHIM123
                     double speed = Convert.ToDouble(worksheet.Cells[row, 5].Text.Replace(',', '.'));
 
                     chart1.Series["Длительность бега"].Points.AddXY(date, runDuration);
+                    chart1.Series["Скорость"].Points.AddXY(date, speed);
                 }
             }
         }
