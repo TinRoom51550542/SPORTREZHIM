@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +27,7 @@ namespace SPORTREZHIM123
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
 
-            FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\OneDrive\Рабочий стол\StatisticOfRunning.xlsx");
+            FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\1.xlsx");
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
@@ -52,17 +52,82 @@ namespace SPORTREZHIM123
 
         private void btnSumKm_Click(object sender, EventArgs e)
         {
-
+            Manipulation k = new Manipulation();
+            string[,] dataArray = k.data();
+            double summ = k.weekend(dataArray);
+            textBox1.Text = summ.ToString();
         }
 
         private void btnForecast_Click(object sender, EventArgs e)
         {
+            int n = Convert.ToInt32(textBox2.Text);
+            int N = Convert.ToInt32(textBox3.Text);
+            Manipulation k = new Manipulation();
+            string[,] dataArray = k.data();
+            int parameter = Convert.ToInt32(textBox4.Text);
+
+            List<double> op = k.extrapolation(dataArray, n, N, parameter);
+            textBox1.Text = op[1].ToString();
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+
+            chart1.ChartAreas.Add(new ChartArea("Area1"));
+
+            Series series = new Series
+            {
+                Name = "Data",
+                ChartType = SeriesChartType.Line
+            };
+
+            for (int i = 0; i < op.Count; i++)
+            {
+                series.Points.AddXY(i + 1, op[i]); 
+            }
+
+            chart1.Series.Add(series);
 
         }
 
         private void btnPaintGraphics_Click(object sender, EventArgs e)
         {
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
 
+            FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\1.xlsx");
+            using (ExcelPackage package = new ExcelPackage(fileInfo))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+
+                chart1.ChartAreas.Add(new ChartArea("Area1"));
+
+                Series series1 = new Series
+                {
+                    Name = "Длительность бега",
+                    ChartType = SeriesChartType.Line
+                };
+
+                Series series2 = new Series
+                {
+                    Name = "Скорость",
+                    ChartType = SeriesChartType.Line
+                };
+
+                chart1.Series.Add(series1);
+                chart1.Series.Add(series2);
+
+                chart1.Series["Длительность бега"].XValueType = ChartValueType.String;
+                chart1.Series["Скорость"].XValueType = ChartValueType.String;
+
+                for (int row = 2; row <= worksheet.Dimension.Rows; row++)
+                {
+                    string date = worksheet.Cells[row, 1].Text;
+                    double runDuration = Convert.ToDouble(worksheet.Cells[row, 3].Text);
+                    double speed = Convert.ToDouble(worksheet.Cells[row, 5].Text.Replace(',', '.'));
+
+                    chart1.Series["Длительность бега"].Points.AddXY(date, runDuration);
+                    chart1.Series["Скорость"].Points.AddXY(date, speed);
+                }
+            }
         }
     }
 }
