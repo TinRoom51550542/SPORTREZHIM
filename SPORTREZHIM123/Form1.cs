@@ -26,7 +26,6 @@ namespace SPORTREZHIM123
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
-
             FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\1.xlsx");
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
@@ -67,7 +66,7 @@ namespace SPORTREZHIM123
             int parameter = Convert.ToInt32(textBox4.Text);
 
             List<double> op = k.extrapolation(dataArray, n, N, parameter);
-            textBox1.Text = op[1].ToString();
+
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
 
@@ -94,6 +93,7 @@ namespace SPORTREZHIM123
             chart1.ChartAreas.Clear();
 
             FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\1.xlsx");
+
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
