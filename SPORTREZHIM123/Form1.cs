@@ -59,33 +59,44 @@ namespace SPORTREZHIM123
 
         private void btnForecast_Click(object sender, EventArgs e)
         {
-            int n = Convert.ToInt32(textBox2.Text);
-            int N = Convert.ToInt32(textBox3.Text);
+            int n;
+            bool flagIfIntn = int.TryParse(textBox2.Text, out n);
+            int N;
+            bool flagIfIntN = int.TryParse(textBox3.Text, out N);
             Manipulation k = new Manipulation();
             string[,] dataArray = k.data();
-            int parameter = Convert.ToInt32(textBox4.Text);
+            int parameter;
+            bool flagIfIntParameter = int.TryParse(textBox4.Text, out parameter);
 
-            List<double> op = k.extrapolation(dataArray, n, N, parameter);
-
-            chart1.Series.Clear();
-            chart1.ChartAreas.Clear();
-
-            chart1.ChartAreas.Add(new ChartArea("Area1"));
-
-            Series series = new Series
+            if ((flagIfIntn) && (flagIfIntN) && (flagIfIntParameter))
             {
-                Name = "Data",
-                ChartType = SeriesChartType.Line
-            };
 
-            for (int i = 0; i < op.Count; i++)
-            {
-                series.Points.AddXY(i + 1, op[i]); 
+                List<double> op = k.extrapolation(dataArray, n, N, parameter);
+
+                chart1.Series.Clear();
+                chart1.ChartAreas.Clear();
+
+                chart1.ChartAreas.Add(new ChartArea("Area1"));
+
+                Series series = new Series
+                {
+                    Name = "Data",
+                    ChartType = SeriesChartType.Line
+                };
+
+                for (int i = 0; i < op.Count; i++)
+                {
+                    series.Points.AddXY(i + 1, op[i]); 
+                }
+
+                chart1.Series.Add(series);
             }
-
-            chart1.Series.Add(series);
-
+            else
+            {
+                MessageBox.Show("Введите корректные значения!");
+            }
         }
+
 
         private void btnPaintGraphics_Click(object sender, EventArgs e)
         {
