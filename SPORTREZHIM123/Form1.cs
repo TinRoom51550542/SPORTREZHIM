@@ -47,7 +47,6 @@ namespace SPORTREZHIM123
                     dataGridView1.Rows.Add(values);
                 }
             }
-
         }
     }
 }
