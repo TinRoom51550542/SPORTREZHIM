@@ -1,0 +1,10 @@
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\bin\Debug\SPORTREZHIM123.exe.config
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\bin\Debug\SPORTREZHIM123.exe
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\bin\Debug\SPORTREZHIM123.pdb
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\obj\Debug\SPORTREZHIM123.csproj.AssemblyReference.cache
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\obj\Debug\SPORTREZHIM123.Form1.resources
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\obj\Debug\SPORTREZHIM123.Properties.Resources.resources
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\obj\Debug\SPORTREZHIM123.csproj.GenerateResource.cache
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\obj\Debug\SPORTREZHIM123.csproj.CoreCompileInputs.cache
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\obj\Debug\SPORTREZHIM123.exe
+C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\obj\Debug\SPORTREZHIM123.pdb
