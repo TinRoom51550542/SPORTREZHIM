@@ -93,7 +93,7 @@ namespace SPORTREZHIM123
             }
             else
             {
-
+                MessageBox.Show("Введите корректные значения!");
             }
         }
 
