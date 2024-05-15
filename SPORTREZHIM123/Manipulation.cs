@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPORTREZHIM123
+namespace WindowsFormsApp1
 {
     internal class Manipulation
     {
@@ -37,6 +37,8 @@ namespace SPORTREZHIM123
                 }
                 return dataArray;
             }
+
+        }
         public double weekend(string[,] dataArray)
         {
             double sum = 0;
@@ -48,7 +50,28 @@ namespace SPORTREZHIM123
             }
             return sum;
         }
+        public List<double> extrapolation(string[,] dataArray, int n, int N, int parameter)
+        {
+            List<double> extra= new List<double>();
+            List<double> analysis = new List<double>();
+            for (int i = 1; i <= n; i++)
+            {
+                analysis.Add(Convert.ToDouble(dataArray[33-i, parameter]));
+            }
+            for (int i = 0; i < N; i++)
+            {
+                double sum = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    sum += analysis[j];
+                }
+                double answer = sum / n;
+                analysis.Add(answer);
+                analysis.RemoveAt(0);
+                extra.Add(answer);
+            }
 
+            return extra;
         }
 
     }
