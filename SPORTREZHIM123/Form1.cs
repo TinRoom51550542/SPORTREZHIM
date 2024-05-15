@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +22,7 @@ namespace SPORTREZHIM123
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_OpenFile(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
@@ -47,6 +47,22 @@ namespace SPORTREZHIM123
                     dataGridView1.Rows.Add(values);
                 }
             }
+
+        }
+
+        private void btnSumKm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnForecast_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPaintGraphics_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
