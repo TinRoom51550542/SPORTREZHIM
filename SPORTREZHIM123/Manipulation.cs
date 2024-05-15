@@ -42,7 +42,7 @@ namespace SPORTREZHIM123
         public double weekend(string[,] dataArray)
         {
             double sum = 0;
-            for (int i = 1; i < 32; i++)
+            for (int i = 1; i < dataArray.GetLength(0); i++)
             {
                 if (dataArray[i, 1] == "Суббота" || dataArray[i, 1] == "Воскресенье") {
                     sum += Convert.ToDouble(dataArray[i, 3]);
@@ -56,7 +56,7 @@ namespace SPORTREZHIM123
             List<double> analysis = new List<double>();
             for (int i = 1; i <= n; i++)
             {
-                analysis.Add(Convert.ToDouble(dataArray[33-i, parameter]));
+                analysis.Add(Convert.ToDouble(dataArray[dataArray.GetLength(0)-i, parameter]));
             }
             for (int i = 0; i < N; i++)
             {
