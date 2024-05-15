@@ -26,8 +26,7 @@ namespace SPORTREZHIM123
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
-
-            FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\OneDrive\Рабочий стол\StatisticOfRunning.xlsx");
+            FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\1.xlsx");
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
@@ -52,17 +51,21 @@ namespace SPORTREZHIM123
 
         private void btnSumKm_Click(object sender, EventArgs e)
         {
-
+            Manipulation k = new Manipulation();
+            string[,] dataArray = k.data();
+            double summ = k.weekend(dataArray);
+            textBox1.Text = summ.ToString();
         }
 
         private void btnForecast_Click(object sender, EventArgs e)
         {
-            int n = 5;
-            int N = 10;
+            int n = Convert.ToInt32(textBox2.Text);
+            int N = Convert.ToInt32(textBox3.Text);
             Manipulation k = new Manipulation();
             string[,] dataArray = k.data();
-          
-            List<double> op = k.extrapolation(dataArray, n, N, 2);
+            int parameter = Convert.ToInt32(textBox4.Text);
+
+            List<double> op = k.extrapolation(dataArray, n, N, parameter);
 
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
@@ -89,7 +92,8 @@ namespace SPORTREZHIM123
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
 
-            FileInfo fileInfo = new FileInfo(@"C:\Users\PC\Desktop\WindowsFormsApp1\1.xlsx");
+            FileInfo fileInfo = new FileInfo(@"C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\1.xlsx");
+
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];

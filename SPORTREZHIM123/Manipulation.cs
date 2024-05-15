@@ -15,7 +15,7 @@ namespace SPORTREZHIM123
         public string[,] data()
         {
 
-            string excelFilePath = @"C:\Users\admin\Downloads\1.xlsx";
+            string excelFilePath = @"C:\Users\Евгения\source\repos\SPORTREZHIM123\SPORTREZHIM123\1.xlsx";
 
             using (var package = new ExcelPackage(new FileInfo(excelFilePath)))
             {
